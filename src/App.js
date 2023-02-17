@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import "./assets/css/style.css"
+import "./assets/css/homepage.css"
+
+import SideNav from './components/SideNav';
+import Homepage from "./components/Homepage";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import FooterPlayer from './components/FooterPlayer';
+import SubHeader from './components/SubHeader';
+import SearchPage from './components/SearchPage';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <SideNav />
+      <main className="navbar-fix">
+        <SubHeader />
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/search/:q?" element={<SearchPage />} />
+        </Routes>
+        <FooterPlayer />
+      </main>
+    </BrowserRouter>
   );
 }
 
